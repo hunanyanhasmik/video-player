@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Video Player App</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
+            video {
+                width: 60%;
+                height: auto;
+                margin-top: 20px;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+            li {
+                margin: 10px;
+                cursor: pointer;
+            }
+            button {
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Video Player</h1>
+        <video id="videoPlayer" controls></video>
+
+        <h2>Video List</h2>
+        <ul id="videoList"></ul>
+
+        <h2>Upload New Video</h2>
+        <input type="file" id="videoFile" />
+        <button onclick="uploadVideo()">Upload</button>
+
+        <script src="./js/script.js"></script>
+    </body>
+</html>
