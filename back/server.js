@@ -9,10 +9,10 @@ const app = express();
 const PORT = 3000;
 
 let videos = [
-    { id: "1", title: "Piper", filePath: "./videos/piper.mp4" },
-    { id: "2", title: "Penguins Of Madagascar", filePath: "./videos/penguins-of-adagascar.mp4" },
-    { id: "3", title: "Pixar Final", filePath: "./videos/pixar-final.mp4" },
-    { id: "4", title: "Day & Night", filePath: "./videos/day-night.mp4" },
+    { id: "1", title: "Piper", size: "14.8 MB", filePath: "./videos/piper.mp4" },
+    { id: "2", title: "Penguins Of Madagascar", size: "20.2 MB", filePath: "./videos/penguins-of-adagascar.mp4" },
+    { id: "3", title: "Pixar Final", size: "28.4 MB", filePath: "./videos/pixar-final.mp4" },
+    { id: "4", title: "Day & Night", size: "15.7 MB", filePath: "./videos/day-night.mp4" },
 ];
 
 const storage = multer.diskStorage({
@@ -56,6 +56,7 @@ app.post('/upload-video', upload.single('video'), (req, res) => {
     const newVideo = {
         id: Date.now().toString(),
         title: path.basename(req.file.originalname, path.extname(req.file.originalname)),
+        size: `${(req.file.size / (1024 * 1024)).toFixed(2)} MB`,
         filePath: `uploads/${req.file.filename}`
     };
 
@@ -72,6 +73,7 @@ app.post('/create-video', upload.single('video'), (req, res) => {
     const newVideo = {
         id: Date.now().toString(),
         title: req.body.title,
+        size: `${(req.file.size / (1024 * 1024)).toFixed(2)} MB`,
         filePath: `uploads/${req.file.filename}`,
     };
 
